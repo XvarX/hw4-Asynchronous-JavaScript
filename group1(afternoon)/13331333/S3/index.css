@@ -1,0 +1,160 @@
+.icon {
+	position: absolute;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+li {
+	list-style-type: none;
+	text-align: center;
+	font-size: 24px;
+	color: rgba(56, 210, 146, 1);
+}
+
+span {
+	font-weight: bold;
+	text-align: center;
+	color: rgba(255, 255, 255, 1);
+	margin-left: 10px;
+}
+#button > .apb > .icon {
+	background-image: url("images/atplus_white.png");
+	background-color: rgba(154, 159, 214, 1);
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 80%;
+	width: 32px;
+	height: 32px;
+	transition: transform 1s ease-in-out 1s, background-image 0s ease-in-out 0.7s, background-color 1s ease-in-out 0.7s;
+}
+
+#button:hover > .apb > .icon {
+	background-image: url("images/atplus_green.png");
+	background-color: rgba(48, 63, 159, 1);
+	transform: scale(2.0, 2.0);
+	transition: transform 1s ease-in-out 0s;
+}
+
+#button {
+	width: 32px;
+	height: 32px;
+	position: relative;
+	margin: 0 auto;
+	top: 400px;
+}
+
+#button:hover > #info-bar {
+	transform: translate(10px, -120px);
+	opacity: 1;
+	transition: transform 1s ease-in-out 0s, opacity 1s ease-in-out 0s;
+}
+
+#button > #info-bar {
+	opacity: 0;
+	transition: transform 0.7s ease-in-out 0s, opacity 0.7s ease-in-out 0s;
+}
+
+#button:hover > #control-ring-container > #control-ring > .mask {
+	transform: translate(-60px, -35px);
+	opacity: 1;
+	transition: transform 1s ease-in-out 0s, opacity 1s ease-in-out 0s;
+}
+
+#button > #control-ring-container > #control-ring > .mask {
+	opacity: 0;
+	transition: transform 0.7s ease-in-out 0s, opacity 0.7s ease-in-out 0s;
+}
+
+#button:hover > #control-ring-container > #control-ring > .history {
+	transform: translate(-70px, 5px);
+	opacity: 1;
+	transition: transform 1s ease-in-out 0s, opacity 1s ease-in-out 0s;
+}
+
+#button > #control-ring-container > #control-ring > .history {
+	opacity: 0;
+	transition: transform 0.7s ease-in-out 0s, opacity 0.7s ease-in-out 0s;
+}
+
+#button:hover > #control-ring-container > #control-ring > .message {
+	transform: translate(-55px, 40px);
+	opacity: 1;
+	transition: transform 1s ease-in-out 0s, opacity 1s ease-in-out 0s;
+}
+
+#button > #control-ring-container > #control-ring > .message {
+	opacity: 0;
+	transition: transform 0.7s ease-in-out 0s, opacity 0.7s ease-in-out 0s;
+}
+
+#button:hover > #control-ring-container > #control-ring > .setting {
+	transform: translate(-20px, 60px);
+	opacity: 1;
+	transition: transform 1s ease-in-out 0s, opacity 1s ease-in-out 0s;
+}
+
+#button > #control-ring-container > #control-ring > .setting {
+	opacity: 0;
+	transition: transform 0.7s ease-in-out 0s, opacity 0.7s ease-in-out 0s;
+}
+
+#button:hover > #control-ring-container > #control-ring > .sign {
+	transform: translate(20px, 60px);
+	opacity: 1;
+	transition: transform 1s ease-in-out 0s, opacity 1s ease-in-out 0s;
+}
+
+#button > #control-ring-container > #control-ring > .sign {
+	opacity: 0;
+	transition: transform 0.7s ease-in-out 0s, opacity 0.7s ease-in-out 0s;
+}
+
+
+#info-bar {
+	position: absolute;
+	background-color: rgba(126, 126, 126, 1);
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 160px;
+	height: 160px;
+	bottom: -64px;
+	right: -64px;
+	transform: scale(0.2, 0.2);
+}
+
+#info-bar li {
+	position: absolute;
+	top: 50px;
+	left: 50px;
+	font-size: 50px;
+	font-weight: bold;
+	color: rgba(56, 210, 146, 1);
+}
+
+.button {
+	position: absolute;
+	background-color: rgba(48, 63, 159, 1);
+	border-radius: 50%;
+	background-repeat: no-repeat;
+	background-position: center center;
+	width: 32px;
+	height: 32px;
+	bottom: 0;
+	right: 0;
+}
+
+.unread {
+	border-radius: 50%;
+	display: inline-block;
+	background-color: red;
+	width: 18px;
+	height: 18px;
+	position: absolute;
+	right: -6px;
+	top: -6px;
+	font-size: 14px;
+}
