@@ -442,7 +442,7 @@ return {
 
   var numButtons = buttons.length;
   var AUTO = true;
-  var FAIL_RATE = 0.8;
+  var FAIL_RATE = 0.3;
 
   function startPending(button, auto) {
     // check if it is disabled
@@ -455,9 +455,8 @@ return {
 
     // disable other buttons
     for (var i = 0; i < numButtons; ++i) {
+      util.removeEvent(buttons[i], 'click', handleButton);
       if (buttons[i] !== button) {
-        if (!auto)
-          util.removeEvent(buttons[i], 'click', handleButton);
         util.addClass(buttons[i], 'disabled');
       }
     }
@@ -541,7 +540,7 @@ return {
   }
 
   function randomBreak(i, message, currentSum) {
-    if (Math.random() > FAIL_RATE) {
+    if (Math.random() < FAIL_RATE) {
       return Promise.reject({message: message, currentSum: currentSum});
     } else {
       msgtext.innerHTML = message;
@@ -582,36 +581,7 @@ return {
             });
   }
 
-  function autoload(e) {
-    init(e, AUTO);
-    util.removeEvent(apb, 'click', autoload);  // stop racing
-    util.addClass(apb, 'disabled');
-
-    var sequence = [];
-    for (i = 0; i < numButtons; ++i) {
-      sequence.push(i);
-    }
-    
-    var dict = ['A', 'B', 'C', 'D', 'E'];
-    sequence = util.shuffle(sequence);
-
-    var text = sequence.map(function(i){ return dict[i]; }).join(', ');
-    seqtext.innerHTML = text;
-
-    var handlers = [aHandler, bHandler, cHandler, dHandler, eHandler];
-
-    var promise;
-    for (var i = 0; i < numButtons; ++i) {
-      promise = (typeof promise === 'undefined') ?  handlers[sequence[i]](0) :
-        promise.then(
-          (function(idx) {
-            return function(currentSum) {
-              return handlers[sequence[idx]](currentSum);
-            }
-          })(i)
-        );
-    }
-
+  function errorHandler(reason) {
     var negation = {
       "这是个天大的秘密": "这不是个天大的秘密",
       "我不知道": "我知道",
@@ -620,20 +590,54 @@ return {
       "才怪": "才不怪"
     };
 
-    promise.then(bubbleHandler)["catch"](function(reason) {
-      if (negation[reason.message]) {
-        msgtext.innerHTML = negation[reason.message];
-      } else {
-        msgtext.innerHTML = reason.message.replace("目测不超过", "目测超过");
-      }
-      util.addClass(msgtext, 'failed');
-      util.addEvent(apb, 'click', autoload);
-      util.removeClass(apb, 'disabled');
-    })
+    if (negation[reason.message]) {
+      msgtext.innerHTML = negation[reason.message];
+    } else {
+      msgtext.innerHTML = reason.message.replace("目测不超过", "目测超过");
+      autoCalculate(reason.currentSum);
+    }
+
+    util.addClass(msgtext, 'failed');
+    util.addEvent(apb, 'click', autoload);
+    util.removeClass(apb, 'disabled');
+
+    return reason.currentSum;
   }
 
+  function autoload(e) {
+    init(e, AUTO);
+    util.removeEvent(apb, 'click', autoload);  // stop racing
+    util.addClass(apb, 'disabled');
+
+    var seq = [];
+    for (i = 0; i < numButtons; ++i) {
+      seq.push(i);
+    }
+    
+    var dict = ['A', 'B', 'C', 'D', 'E'];
+    seq = util.shuffle(seq);
+
+    var text = seq.map(function(i){ return dict[i]; }).join(', ');
+    seqtext.innerHTML = text;
+
+    var handlers = [aHandler, bHandler, cHandler, dHandler, eHandler];
+
+    var promise;
+    for (var i = 0; i < numButtons; ++i) {
+      if (typeof promise === 'undefined') {
+        promise = handlers[seq[i]](0);
+      } else {
+        promise = promise.then(handlers[seq[i]]);
+      }
+    }
+
+    promise.then(bubbleHandler)["catch"](errorHandler);
+  }
 
   function init(e, auto) {
+    if (!auto)
+      marks = {};
+
     // remove sum
     total.innerHTML = '';
     seqtext.innerHTML = '';
@@ -651,8 +655,12 @@ return {
       if (util.hasClass(random, 'show'))
         util.removeClass(random, 'show');
 
-      if (!auto)
+      if (!auto) {
         util.addEvent(buttons[i], 'click', handleButton);
+        marks[buttons[i].id] = null;
+      } else {
+        util.removeEvent(buttons[i], 'click', handleButton);
+      }
 
       util.removeClass(buttons[i], 'disabled');
     }
