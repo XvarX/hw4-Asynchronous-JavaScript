@@ -1,0 +1,153 @@
+body {
+	font-family: "Microsoft Yahei", Georgia, Serif;
+}
+
+ul {
+	list-style: none;
+}
+
+#at-plus-container {
+	text-align: center;
+}
+
+#info-bar {	
+	text-align: center;
+	visibility: hidden;
+	height: 10px;
+	width: 10px;
+	margin-left: 48%;
+	border-radius: 50%;
+	margin-top: 450px;
+	font-weight: bold;
+	background-color: white;
+	color: #269b88;
+	line-height: 10px;
+	transiton: all 0.6s ease;
+	-webkit-transition: all 0.6s ease;
+}
+
+#button:hover #info-bar {
+	visibility: visible;
+	background-color: #7F7D7E;
+	height: 135px;
+	width: 135px;
+	margin-top: 300px;
+	line-height: 135px;
+	margin-left: 38%;
+	font-size: 30px;
+}
+
+.apb {
+	text-align: center;
+	width: 100%;
+}
+
+.icon {
+	text-align: center;
+	display: inline-block;
+	background: url("../images/atplus_white.png") #969cd0 no-repeat center center;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	transiton: all 0.6s ease;
+	-webkit-transition: all 0.6s ease;
+}
+
+#button:hover .icon {
+	background: url("../images/atplus_green.png") rgba(48, 63, 159, 1) no-repeat center center;
+	background-size: 40px 28px;
+	width: 55px;
+	height: 55px;
+}
+
+.unread {
+	visibility: hidden;
+	transiton: all 0.6s ease;
+	-webkit-transition: all 0.6s ease;
+}
+
+#button:hover span {
+	text-align: center;
+	height: 15px;
+	width: 18px;
+	background-color: #F53F3B;
+	color: #FFB3B2;
+	border-radius: 50%;
+	position: absolute;
+	left: 22px;
+	top: -4px;
+	visibility: visible;
+	font-size: 8pt;
+	padding-top: 3px;
+}
+
+#button:hover .disable {
+	text-align: center;
+	font-size: 16pt;
+	color: white;
+	background-color: #7F7D7E;
+	visibility: visible;
+	cursor: default;
+}
+
+#button:hover .active {
+	font-size: 16pt;
+	color: #34da9c;
+	background-color: rgba(48, 63, 159, 1);
+	visibility: visible;
+	cursor: pointer;
+}
+
+button {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	position: absolute;
+	top: 25px;
+	left: 49%;
+	visibility: hidden;
+	transiton: all 0.6s ease;
+	-webkit-transition: all 0.6s ease;
+	border: 0;
+}
+
+#button {
+	height: 100%;
+	width: 500px;
+	margin: auto auto;
+	z-index: 99;
+}
+
+
+#button:hover #a {
+	top: 140px;
+	left: 43%;
+}
+
+#button:hover #b {
+	top: 183px;
+	left: 42.5%;
+}
+
+#button:hover #c {
+	top: 220px;
+	left: 44%;
+}
+
+#button:hover #d {
+	top: 240px;
+	left: 47%;
+}
+
+#button:hover #e {
+	top: 240px;
+	left: 50%;
+}
+
+#menu {
+	position: relative;
+	height: 100%;
+	width: 100%;
+	text-align: center;
+	margin-top: 150px;
+}
