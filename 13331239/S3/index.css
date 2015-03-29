@@ -72,23 +72,7 @@ button { border: none; outline: none;}
 	opacity: 0;
 }
 
-#clickBar { background-color: transparent; }
-
-#bottom-positioner:hover #clickBar
-{
-	position: absolute; left: 70px; top: 70px;
-	width: 60px; height: 60px;
-	z-index: 1;
-}
 .waiting { opacity: 1; }
 
 .inactive { background-color: rgba(0, 0, 0, 0.6) !important; }
 
-#order
-{
-    font-size: 40px;
-    color: #079E6E;
-    position: absolute;
-    left: 18%;
-    bottom: 135%;
-}

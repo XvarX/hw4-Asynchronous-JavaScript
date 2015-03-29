@@ -5,7 +5,6 @@ window.onload = function()
 	var hoverArea = document.getElementById('bottom-positioner');
 
 	bigButton.disabled = 1;
-    resetCalculator();
 	bigButton.onclick = calculateSum;
 	hoverArea.onmouseleave = resetCalculator;
 	getRandomNumber(bigButton, buttons);
@@ -20,14 +19,14 @@ function connectServer(callback)
     }
 
     xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) { //4就是交互完成，200指的是正常交互完成.404指的是文件未找到.500是出现内部服务器错误
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
             if (typeof callback === 'function') {
                 callback(xmlhttp.responseText);
             }
         }
     }
 
-    xmlhttp.open('GET', '../server', true); //true为异步方式
+    xmlhttp.open('GET', 'server', true);
     xmlhttp.send();
 }
 
