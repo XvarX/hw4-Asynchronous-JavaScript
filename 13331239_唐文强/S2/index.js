@@ -7,6 +7,7 @@ window.onload = function()
     xmlhttp = new XMLHttpRequest();
 
 	bigButton.disabled = 1;
+    resetCalculator();
 	bigButton.onclick = calculateSum;
 	hoverArea.onmouseleave = resetCalculator;
     at_plus.onclick = simulateRobert;
