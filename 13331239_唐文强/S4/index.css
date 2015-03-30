@@ -1,0 +1,94 @@
+*{ margin: 0; padding: 0;}
+
+button { border: none; outline: none;}
+
+#bottom-positioner
+{ 
+	position: absolute; bottom: 40%; left: 50%;
+	border-radius: 50%; width: 30px; height: 30px;
+	background: rgba(0, 0, 0, 0.4) url("assets/images/atplus_white.png") no-repeat center;
+	transition: 0.6s;
+	-o-transition: 0.6s;
+	-ms-transition: 0.6s;
+	-moz-transition: 0.6s;
+	-webkit-transition: 0.6s;
+}
+
+#bottom-positioner:hover
+{
+	background: rgba(48, 69, 179, 1) url("assets/images/atplus_green.png") no-repeat center;
+	background-size: 90%; width: 50px; height: 50px;
+}
+
+#button
+{
+	 position: absolute; bottom: 20px; right: 20px; width: 0; height: 0; opacity: 0;
+	 transition: 0.6s;
+	 -o-transition: 0.6s;
+	 -ms-transition: 0.6s;
+	 -moz-transition: 0.6s;
+	 -webkit-transition: 0.6s;
+}
+
+#bottom-positioner:hover #button
+{
+    width: 200px; height: 200px;
+    bottom: -75px; right: -75px;
+    opacity: 1.0;	
+}
+
+#big-bar
+{
+	width: 65%; height: 65%; border-radius: 50%;
+	position: absolute; left: 20%; bottom: 70%;
+	background-color: rgba(55, 50, 170, 1);
+	font-size: 30px; color: #079E6E; overflow: hidden;
+}
+
+.button
+{
+	width: 20%; height: 20%; border-radius: 50%;
+	position: absolute;
+	color: #079E6E; font-size: 25px; line-height: 25px;
+	background-color: rgba(55, 50, 170, 1);
+}
+
+.mask { bottom: 62%; right: 72%; }
+
+.history { bottom: 40%; right: 80%; }
+
+.message { bottom: 19%; right: 69%; }
+
+.setting { bottom: 8%; right: 47%; }
+
+.sign { bottom: 11%; right: 23%; }
+
+.unread
+{
+	background-color: red;
+	color: white; font-size: 12px; text-align: center; line-height: 15px;
+	width: 44%; height: 44%; border-radius: 50%;
+	position: absolute; left: 20px; top: -3px;
+	opacity: 0;
+}
+
+#clickBar { background-color: transparent; }
+
+#bottom-positioner:hover #clickBar
+{
+	position: absolute; left: 70px; top: 70px;
+	width: 60px; height: 60px;
+	z-index: 1;
+}
+.waiting { opacity: 1; }
+
+.inactive { background-color: rgba(0, 0, 0, 0.6) !important; }
+
+#order
+{
+    font-size: 40px;
+    color: #079E6E;
+    position: absolute;
+    left: 18%;
+    bottom: 135%;
+}
